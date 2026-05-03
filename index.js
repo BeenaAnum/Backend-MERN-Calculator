@@ -43,4 +43,11 @@ app.get("/history", async (req, res) => {
   res.json(data);
 });
 
-app.listen(5000, () => console.log("History Server running on 5000"));
+// app.listen(5000, () => console.log("History Server running on 5000"));
+// Sirf tab listen karein jab local environment ho
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`Server running on ${PORT}`));
+}
+
+module.exports = app;
